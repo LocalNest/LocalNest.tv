@@ -1,0 +1,534 @@
+/*************************************************
+ * 0. GLOBAL VARIABLES & BRAND ASSETS
+ *************************************************/
+:root {
+    /* Brand Colors */
+    --ln-bg: #050609;
+    --ln-bg-soft: #0b1018;
+    --ln-primary: #f4b040;
+    --ln-accent: #1c8c7a;
+    --ln-text-main: #f5f5f5;
+    --ln-text-muted: #a4acb8;
+
+    /* Layout Constants */
+    --ln-radius-lg: 18px;
+    --ln-radius-md: 12px;
+    --ln-radius-pill: 999px;
+
+    /* Shadows & Glows */
+    --ln-shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+    --ln-glow-primary: 0 0 15px rgba(244, 176, 64, 0.4);
+    --ln-glow-accent: 0 0 15px rgba(28, 140, 122, 0.4);
+
+    /* Animation Easing */
+    --ln-transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*************************************************
+ * 1. CORE RESET & SCROLLBAR
+ *************************************************/
+* {
+    transition: var(--ln-transition);
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--ln-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(164, 172, 184, 0.3);
+    border-radius: var(--ln-radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ln-primary);
+}
+
+/*************************************************
+ * 2. LOGIN PAGE
+ *************************************************/
+loginPage,
+.loginPage,
+#loginPage {
+    background:
+        url("/web/login_cover.jpg") center/cover no-repeat fixed,
+        radial-gradient(circle at top left, rgba(244, 176, 64, 0.20), transparent 85%),
+        radial-gradient(circle at bottom right, rgba(28, 140, 122, 0.25), transparent 85%),
+        #02040a !important;
+}
+
+loginPage .padded-left.padded-right.padded-bottom-page,
+.loginPage .padded-left.padded-right.padded-bottom-page,
+#loginPage .padded-left.padded-right.padded-bottom-page {
+    max-width: 520px !important;
+    width: 100%;
+    margin: 7vh auto 5vh auto;
+    padding: 40px 34px 32px 34px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(3, 12, 26, 0.60),
+        rgba(10, 55, 100, 0.55)
+    ) !important;
+    backdrop-filter: blur(26px) saturate(1.2) !important;
+    -webkit-backdrop-filter: blur(26px) saturate(1.2) !important;
+
+    border-radius: 26px !important;
+    border: 1px solid rgba(160, 220, 255, 0.45) !important;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.95),
+        0 0 55px rgba(0, 190, 255, 0.35) !important;
+
+    position: relative;
+    overflow: hidden;
+}
+
+loginPage .padded-left.padded-right.padded-bottom-page::after,
+.loginPage .padded-left.padded-right.padded-bottom-page::after,
+#loginPage .padded-left.padded-right.padded-bottom-page::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 5% 0%, rgba(255, 255, 255, 0.22), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(0, 190, 255, 0.30), transparent 60%);
+    mix-blend-mode: screen;
+    pointer-events: none;
+    opacity: 0.95;
+}
+
+loginPage .padded-left.padded-right.padded-bottom-page > *,
+.loginPage .padded-left.padded-right.padded-bottom-page > *,
+#loginPage .padded-left.padded-right.padded-bottom-page > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Hide default heading */
+#loginPage h1 {
+    display: none !important;
+}
+
+#loginPage,
+#loginPage * {
+    font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
+        "Inter", "Roboto", sans-serif !important;
+}
+
+#loginPage .padded-left.padded-right.padded-bottom-page::before {
+    content: "LocalNest.tv";
+    display: block;
+    font-size: 32px;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    text-align: center;
+    margin-bottom: 22px;
+    color: rgb(249, 144, 70);
+    text-shadow:
+        0 0 20px rgba(0, 0, 0, 0.85),
+        0 0 24px rgba(0, 200, 255, 0.45);
+}
+
+#loginPage label,
+#loginPage .inputLabel {
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #d3e6ff !important;
+}
+
+#loginPage .fieldDescription,
+#loginPage .checkboxLabel {
+    font-size: 12px;
+    color: #c8d7f0 !important;
+}
+
+/* ---------- INPUTS ---------- */
+
+#loginPage .emby-input {
+    background: rgba(3, 10, 20, 0.75) !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(150, 215, 255, 0.55) !important;
+    color: #f5fbff !important;
+    padding: 11px 18px !important;
+}
+
+#loginPage .emby-input:focus {
+    border-color: #26ffe6 !important;
+    box-shadow:
+        0 0 0 1px rgba(38, 255, 230, 0.6),
+        0 0 16px rgba(0, 200, 255, 0.55) !important;
+}
+
+/* ---------- BUTTONS ---------- */
+
+#loginPage .emby-button.emby-button-primary {
+    background: linear-gradient(135deg, var(--ln-accent), var(--ln-primary)) !important;
+    border-radius: 999px !important;
+    border: none !important;
+    color: #050609 !important;
+
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 650;
+
+    box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.9),
+        0 0 14px rgba(0, 0, 0, 0.8);
+    transform: translateY(0);
+    transition:
+        transform 0.12s ease-out,
+        box-shadow 0.12s ease-out,
+        filter 0.12s ease-out;
+}
+
+#loginPage .emby-button.emby-button-primary:hover,
+#loginPage .emby-button.emby-button-primary:focus-visible {
+    filter: brightness(1.08);
+    transform: translateY(-2px);
+    box-shadow:
+        0 14px 28px rgba(0, 0, 0, 0.95),
+        0 0 18px rgba(0, 0, 0, 0.9);
+}
+
+#loginPage .emby-button:not(.emby-button-primary) {
+    background: rgba(0, 0, 0, 0.55) !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    color: #e4edf8 !important;
+    letter-spacing: 0.06em;
+    transition:
+        transform 0.12s ease-out,
+        box-shadow 0.12s ease-out,
+        filter 0.12s ease-out;
+}
+
+#loginPage .emby-button:not(.emby-button-primary):hover,
+#loginPage .emby-button:not(.emby-button-primary):focus-visible {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+    box-shadow:
+        0 10px 22px rgba(0, 0, 0, 0.9),
+        0 0 12px rgba(0, 0, 0, 0.85);
+}
+
+/* ---------- House Rules ---------- */
+
+#loginPage .loginDisclaimerInner {
+    margin-top: 26px;
+    padding: 14px 18px 14px 18px;
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(12, 16, 24, 0.96),
+        rgba(22, 26, 36, 0.96)
+    );
+    border: 1px solid rgba(180, 195, 215, 0.75);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 8px 18px rgba(0, 0, 0, 0.85);
+
+    color: #dfe6f5;
+    font-size: 12px;
+    line-height: 1.5;
+    position: relative;
+}
+
+#loginPage .loginDisclaimerTitle {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 11px;
+    font-weight: 650;
+    margin-bottom: 6px;
+    color: #f0f4ff;
+}
+
+#loginPage .loginDisclaimerList {
+    margin: 0;
+    padding-left: 18px;
+    list-style: none;
+}
+
+#loginPage .loginDisclaimerList li {
+    margin-bottom: 4px;
+    position: relative;
+    padding-left: 14px;
+}
+
+#loginPage .loginDisclaimerList li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: rgb(249, 144, 70);
+    font-size: 14px;
+}
+
+
+
+/* My Logo injection */
+.pageTitleWithLogo {
+    background: url("/web/localnest.png") left center/140px auto no-repeat !important;
+    padding-left: 4.5rem !important;
+}
+
+/*************************************************
+ * 3. GLOBAL LAYOUT
+ *************************************************/
+.backgroundContainer,
+.backdropContainer,
+html {
+    background-color: var(--ln-bg);
+}
+
+#homePage,
+#indexPage,
+#homePage+.backgroundContainer,
+#homePage+.backdropContainer,
+#indexPage+.backgroundContainer,
+#indexPage+.backdropContainer {
+    background:
+        url("/web/home_cover.jpg") center/cover no-repeat fixed,
+        radial-gradient(circle at top left, rgba(244, 176, 64, 0.45), transparent 70%),
+        radial-gradient(circle at bottom right, rgba(28, 140, 122, 0.50), transparent 70%),
+        var(--ln-bg) !important;
+    background-blend-mode: soft-light, screen, normal, normal;
+}
+
+.backdropContainer::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at top left, rgba(244, 176, 64, 0.35), transparent 75%),
+        radial-gradient(circle at bottom right, rgba(28, 140, 122, 0.40), transparent 75%);
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Category Backgrounds */
+#moviesPage,
+#moviesPage+.backgroundContainer,
+#moviesPage+.backdropContainer {
+    background:
+        url("/web/movie_cover.jpg") center/cover no-repeat fixed,
+        radial-gradient(circle at top left, rgba(244, 176, 64, 0.45), transparent 70%),
+        radial-gradient(circle at bottom right, rgba(28, 140, 122, 0.50), transparent 70%),
+        var(--ln-bg) !important;
+    background-size: cover, auto, auto, auto !important;
+    background-attachment: fixed, fixed, fixed, fixed !important;
+    background-blend-mode: soft-light, screen, normal, normal;
+}
+
+#tvRecommendedPage,
+#tvSeriesPage,
+#tvRecommendedPage+.backgroundContainer,
+#tvRecommendedPage+.backdropContainer,
+#tvSeriesPage+.backgroundContainer,
+#tvSeriesPage+.backdropContainer {
+    background:
+        url("/web/tv_cover.jpg") center/cover no-repeat fixed,
+        radial-gradient(circle at top left, rgba(244, 176, 64, 0.45), transparent 70%),
+        radial-gradient(circle at bottom right, rgba(28, 140, 122, 0.50), transparent 70%),
+        var(--ln-bg) !important;
+    background-size: cover, auto, auto, auto !important;
+    background-attachment: fixed, fixed, fixed, fixed !important;
+    background-blend-mode: soft-light, screen, normal, normal;
+}
+
+#collectionPage,
+[data-parentid="9d7ad6afe9afa2dab1a2f6e00ad28fa6"],
+#collectionPage~.backgroundContainer,
+[data-parentid="9d7ad6afe9afa2dab1a2f6e00ad28fa6"]~.backgroundContainer,
+#collectionPage~.backdropContainer,
+[data-parentid="9d7ad6afe9afa2dab1a2f6e00ad28fa6"]~.backdropContainer {
+    background:
+        url("/web/collections_cover.jpg") center/cover no-repeat fixed,
+        radial-gradient(circle at top left, rgba(244, 176, 64, 0.45), transparent 70%),
+        radial-gradient(circle at bottom right, rgba(28, 140, 122, 0.50), transparent 70%),
+        var(--ln-bg) !important;
+    background-size: cover, auto, auto, auto !important;
+    background-attachment: fixed, fixed, fixed, fixed !important;
+    background-blend-mode: soft-light, screen, normal, normal;
+}
+
+/*************************************************
+ * 4. HEADER & NAVIGATION
+ *************************************************/
+.skinHeader {
+    background: rgba(5, 6, 9, 0.4) !important;
+    backdrop-filter: blur(25px) saturate(150%) !important;
+    border-bottom: 1px solid rgba(244, 176, 64, 0.15) !important;
+}
+
+.emby-tab-button {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 500;
+}
+
+.emby-tab-button:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    transform: scale(1.05);
+}
+
+.emby-tab-button-active {
+    background: linear-gradient(135deg, var(--ln-accent), var(--ln-primary)) !important;
+    color: var(--ln-bg) !important;
+    box-shadow: var(--ln-glow-primary);
+}
+
+.mainDrawer {
+    background: rgba(5, 6, 9, 0.95) !important;
+    backdrop-filter: blur(20px) !important;
+    border-right: 1px solid rgba(164, 172, 184, 0.1);
+}
+
+.navMenuOption-selected {
+    background: linear-gradient(135deg, var(--ln-accent), var(--ln-primary)) !important;
+    color: var(--ln-bg) !important;
+    box-shadow: var(--ln-glow-accent);
+    transform: translateX(5px);
+}
+
+/*************************************************
+ * 5. CARDS
+ *************************************************/
+.cardBox,
+.itemDetailImage {
+    border-radius: var(--ln-radius-md) !important;
+    background: rgba(11, 16, 24, 0.6) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    overflow: hidden;
+}
+
+.cardBox:hover {
+    transform: translateY(-8px) scale(1.03) !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9), var(--ln-glow-primary) !important;
+    border-color: var(--ln-primary) !important;
+}
+
+.cardBox::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transition: none;
+}
+
+.cardBox:hover::before {
+    left: 150%;
+    transition: all 0.8s ease;
+}
+
+.cardFooter {
+    background: linear-gradient(to top, rgba(5, 6, 9, 0.9), transparent) !important;
+}
+
+/*************************************************
+ * 6. DETAIL PAGES & LISTS
+ *************************************************/
+.fab,
+.btnFloating {
+    background: linear-gradient(135deg, var(--ln-primary), var(--ln-accent)) !important;
+    box-shadow: var(--ln-glow-primary) !important;
+    transform: scale(1);
+    transition: var(--ln-transition);
+}
+
+.fab:hover,
+.btnFloating:hover {
+    transform: scale(1.1) rotate(3deg);
+    box-shadow: 0 0 25px var(--ln-primary) !important;
+}
+
+.listItem {
+    border-radius: var(--ln-radius-md);
+    margin: 5px 0;
+}
+
+.listItem:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.itemProgressBarForeground {
+    background: linear-gradient(90deg, var(--ln-accent), var(--ln-primary)) !important;
+    box-shadow: 0 0 10px var(--ln-primary);
+}
+
+/*************************************************
+ * 7. BUTTONS & INPUTS
+ *************************************************/
+.emby-button-primary {
+    background: linear-gradient(135deg, var(--ln-primary), var(--ln-accent)) !important;
+    border-radius: var(--ln-radius-pill) !important;
+    color: var(--ln-bg) !important;
+    font-weight: 700 !important;
+}
+
+.emby-button-primary:hover {
+    filter: brightness(1.1);
+    box-shadow: var(--ln-glow-primary);
+    transform: translateY(-2px);
+}
+
+.emby-input,
+.emby-select,
+.emby-textarea {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(164, 172, 184, 0.3) !important;
+    border-radius: 10px !important;
+}
+
+.emby-input:focus {
+    border-color: var(--ln-primary) !important;
+    box-shadow: 0 0 0 1px var(--ln-primary) !important;
+}
+
+/*************************************************
+ * 8.  Menu highlighting
+ *************************************************/
+
+/* Left drawer items */
+.navMenuOption {
+  color: var(--ln-text-muted) !important;
+}
+
+.navMenuOption:hover,
+.navMenuOption:focus,
+.navMenuOption:focus-within {
+  background: linear-gradient(135deg, var(--ln-accent), var(--ln-primary)) !important;
+  color: #050609 !important;       /* black text like Home/Favorites */
+}
+
+.navMenuOption-selected {
+  background: linear-gradient(135deg, var(--ln-accent), var(--ln-primary)) !important;
+  color: #050609 !important;
+}
+
+/* Top section tabs (Home, Favorites, etc.) */
+.emby-tab-button:hover {
+  background: linear-gradient(135deg, var(--ln-accent), var(--ln-primary)) !important;
+  color: #050609 !important;
+}
+
+.emby-tab-button.emby-tab-button-active,
+.emby-tab-button-focussed {
+  background: linear-gradient(135deg, var(--ln-accent), var(--ln-primary)) !important;
+  color: #050609 !important;
+}
