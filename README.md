@@ -1,6 +1,6 @@
-# Jellyfin Professional CSS
+# Jellyfin Custom CSS
 
-A clean and modern custom CSS theme for Jellyfin. This theme focuses on premium aesthetics, glassmorphism, and smooth transitions to elevate your media server's user interface.
+A clean and modern CSS theme for Jellyfin. This theme focuses on premium aesthetics, glassmorphism, and smooth transitions to elevate your media server's user interface.
 
 ## Features
 
@@ -50,4 +50,3 @@ Contributions are welcome! If you have suggestions for new features, bug fixes, 
 ---
 
 **Developed by [Brad Myrick](https://github.com/BradMyrick)**  
-*Repository: [LocalNest.tv](https://github.com/LocalNest/LocalNest.tv)*
